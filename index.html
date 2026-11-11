@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Photonography – metin gogoo @ vienna</title>
+<meta name="description" content="Photonography by metin gogoo, Vienna. Silhouettes against the light, hard shadows, everyday moments, mostly in black and white.">
+<meta property="og:title" content="Photonography – metin gogoo @ vienna">
+<meta property="og:image" content="https://live.staticflickr.com/7855/32645056287_dda374f7ca_b.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none}
+body{font-family:'Caveat',cursive;user-select:none;-webkit-user-select:none;
+background-color:#2a2c2e;
+background-image:
+ radial-gradient(ellipse at 45% 35%,rgba(255,255,255,.07),transparent 65%),
+ radial-gradient(ellipse at 90% 100%,rgba(0,0,0,.45),transparent 60%),
+ repeating-linear-gradient(115deg,rgba(255,255,255,.018) 0 1px,transparent 1px 7px),
+ repeating-linear-gradient(25deg,rgba(0,0,0,.06) 0 2px,transparent 2px 13px),
+ linear-gradient(160deg,#34373a,#1f2123);}
+#t{position:absolute;inset:0}.p,.note{touch-action:none}
+.p{position:absolute;width:var(--pw);background:#fbfaf7;padding:calc(var(--pw)*.045) calc(var(--pw)*.045) calc(var(--pw)*.17);box-sizing:border-box;
+box-shadow:0 .3vw .8vw rgba(0,0,0,.5),0 1vw 2.4vw rgba(0,0,0,.35);cursor:grab;
+transition:box-shadow .2s}
+.p.drag{cursor:grabbing;box-shadow:0 1.4vw 3vw rgba(0,0,0,.6)}
+.p img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;pointer-events:none}
+.p span{position:absolute;left:0;right:0;bottom:calc(var(--pw)*.03);text-align:center;font-size:calc(var(--pw)*.095);color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 .6vw}
+
+.note{position:absolute;width:var(--nw);background:#f6f1e6;padding:calc(var(--nw)*.065) calc(var(--nw)*.075) calc(var(--nw)*.06);box-sizing:border-box;cursor:grab;
+box-shadow:0 .3vw .8vw rgba(0,0,0,.5),0 1vw 2.4vw rgba(0,0,0,.35);
+background-image:linear-gradient(180deg,rgba(255,255,255,.5),rgba(0,0,0,.02));}
+.note h1{margin:0;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:calc(var(--nw)*.125);color:#151515;line-height:1.05}
+.note h2{margin:calc(var(--nw)*.012) 0 calc(var(--nw)*.04);font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:calc(var(--nw)*.056);color:#333}
+.note p{margin:0 0 calc(var(--nw)*.035);font-size:calc(var(--nw)*.066);line-height:1.2;color:#2b2b2b}
+.note a{font-size:calc(var(--nw)*.06);color:#2b2b2b;text-decoration:none;border-bottom:1px solid #999}
+.note.drag{cursor:grabbing}
+#hint{position:absolute;right:3vmin;bottom:2vmin;color:rgba(240,236,228,.6);font-size:max(14px,2.6vmin);pointer-events:none;z-index:99990}
+#lb{position:fixed;inset:0;background:rgba(8,8,8,.93);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:99999}
+#lb.on{display:flex}
+#lb img{max-width:86vw;max-height:78vh;box-shadow:0 10px 40px rgba(0,0,0,.7);border:.6vw solid #fbfaf7;border-bottom-width:3.2vw}
+#lb .cap{color:#f0ece4;font-family:'Playfair Display',serif;font-style:italic;font-size:max(15px,1.6vw);margin-top:1.2vh}
+#lb a.fl{color:#bdb6aa;font-family:sans-serif;font-size:max(11px,.9vw);margin-top:.6vh;text-decoration:none;border-bottom:1px solid #777}
+#lb .nav{position:absolute;top:50%;transform:translateY(-50%);color:#f0ece4;font-size:max(30px,3.5vw);cursor:pointer;padding:1vw 2vw;opacity:.7}
+#lb .nav:hover{opacity:1}
+#lb .prev{left:0}#lb .next{right:0}
+#lb .x{position:absolute;right:1.5vw;top:1vh;color:#f0ece4;font-size:max(28px,3vw);cursor:pointer;opacity:.7;font-family:sans-serif}
+</style>
+</head>
+<body>
+<div id="t"></div>
+<div class="note" id="note"><h1>Photonography</h1><h2>metin gogoo @ vienna</h2><p>For me, photography is the moment when light tells the story: silhouettes against the light, hard shadows &ndash; <i>so hart wie das Leben</i>. Everyday moments on the streets of Vienna, mostly in black and white.</p><a href="https://www.flickr.com/photos/142684061@N04/albums" target="_blank" rel="noopener">all photos on Flickr &#8599;</a></div>
+<div id="hint">tap &amp; drag the polaroids</div>
+<div id="lb"><span class="x">&times;</span><span class="nav prev">&#8249;</span><span class="nav next">&#8250;</span><img alt=""><div class="cap"></div><a class="fl" target="_blank" rel="noopener">view on Flickr &#8599;</a></div>
+<script>
+const U='https://www.flickr.com/photos/142684061@N04/';
+const P=[
+['49520851893','eb7d4d4786','65535','stripes and shadows'],
+['45666202171','b7d725ac95','1967','abrisshaus b&w'],
+['48828355901','8f996bd0f6','65535','into the light'],
+['32714696808','a5ec0c0594','4908','der schneesturm'],
+['32645056287','dda374f7ca','7855','der schwan'],
+['49374823016','76b21190bb','65535','das gebet'],
+['49771822338','01bc8ee1aa','65535','leela trotzt dem sturm'],
+['48983499011','89106cd193','65535','im tunnel'],
+['50891077772','af35137347','65535','der dritte mann'],
+['40396823491','e7c0e4b981','4723','licht und schatten'],
+['33710568168','5cbdf40a38','7916','aufwärts'],
+['48168431977','fd8e141086','65535','kinder spielen, favoriten'],
+['30483208097','589d6b3d0a','1930','sundown schönbrunn'],
+['34081168623','8ae3bd786f','4272','Bienen beim trinken'],
+['35640541030','2f70fdaf06','4312','Die Heuschrecke auf der Daisy'],
+['49787296141','12db28afa4','65535','olleblume']
+];
+const src=(p,s)=>'https://live.staticflickr.com/'+p[2]+'/'+p[0]+'_'+p[1]+'_'+s+'.jpg';
+let seed=11;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+const T=document.getElementById('t'),els=[];let z=10;
+function mk(C,R,skip){const a=[];for(let r=0;r<R;r++)for(let c=0;c<C;c++){if(skip(c,r))continue;a.push([c,r]);}for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const LAND=mk(6,3,(c,r)=>r==1&&(c==2||c==3));
+const PORT=mk(3,6,(c,r)=>(r==2||r==3)&&c==1);
+P.forEach((p,i)=>{const d=document.createElement('div');d.className='p';
+d.innerHTML='<img src="'+src(p,'z')+'" alt=""><span>'+p[3]+'</span>';
+const a=LAND[i],b=PORT[i];
+d._L=[(a[0]+.5)/6+(rnd()-.5)*.11,(a[1]+.5)/3+(rnd()-.5)*.2];
+d._P=[(b[0]+.5)/3+(rnd()-.5)*.2,(b[1]+.5)/6+(rnd()-.5)*.1];
+d._rot=i==0?0:(rnd()-.5)*50;
+d.style.transform='rotate('+d._rot+'deg)';d.style.zIndex=++z;
+d.dataset.i=i;T.appendChild(d);els.push(d);});
+const N=document.getElementById('note');N._L=[.5,.5];N._P=[.5,.5];N.style.transform='rotate(-3deg)';N.style.zIndex=5000;els.push(N);
+let mode='';
+function place(){const W=innerWidth,H=innerHeight,port=H>W*1.1;
+ const st=document.documentElement.style;
+ if(port){st.setProperty('--pw',Math.min(W*.3,H*.155)+'px');st.setProperty('--nw',Math.min(W*.62,H*.4)+'px');}
+ else{st.setProperty('--pw',Math.min(W*.125,H*.22)+'px');st.setProperty('--nw',Math.min(W*.26,H*.48)+'px');}
+ const m=port?'P':'L';if(m!==mode){mode=m;els.forEach(d=>{d._fx=d['_'+m][0];d._fy=d['_'+m][1];});}
+ els.forEach(d=>{const w=d.offsetWidth,h=d.offsetHeight;
+  let x=d._fx*W-w/2,y=d._fy*H-h/2;x=Math.max(2,Math.min(W-w-2,x));y=Math.max(2,Math.min(H-h-2,y));
+  d.style.left=x+'px';d.style.top=y+'px';});}
+let drag=null;
+document.body.addEventListener('pointerdown',e=>{if(e.target.closest('a'))return;const d=e.target.closest('.p,.note');if(!d)return;
+ drag={d,sx:e.clientX,sy:e.clientY,ox:d.offsetLeft,oy:d.offsetTop,moved:false};d.setPointerCapture(e.pointerId);d.style.zIndex=++z;});
+document.body.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.sx,dy=e.clientY-drag.sy;
+ if(!drag.moved&&Math.hypot(dx,dy)>6){drag.moved=true;drag.d.classList.add('drag');}
+ if(drag.moved){const d=drag.d;d.style.left=(drag.ox+dx)+'px';d.style.top=(drag.oy+dy)+'px';
+  d._fx=(drag.ox+dx+d.offsetWidth/2)/innerWidth;d._fy=(drag.oy+dy+d.offsetHeight/2)/innerHeight;}});
+document.body.addEventListener('pointerup',e=>{if(!drag)return;drag.d.classList.remove('drag');
+ if(!drag.moved&&drag.d.classList.contains('p'))openLb(+drag.d.dataset.i);drag=null;});
+const lb=document.getElementById('lb'),li=lb.querySelector('img'),lc=lb.querySelector('.cap'),la=lb.querySelector('a.fl');let cur=0;
+function openLb(i){cur=i;const p=P[i];li.src=src(p,'b');lc.textContent=p[3];la.href=U+p[0]+'/';lb.classList.add('on');}
+function step(n){openLb((cur+n+P.length)%P.length);}
+lb.querySelector('.x').onclick=()=>lb.classList.remove('on');
+lb.querySelector('.prev').onclick=e=>{e.stopPropagation();step(-1)};
+lb.querySelector('.next').onclick=e=>{e.stopPropagation();step(1)};
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('on')});
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key=='Escape')lb.classList.remove('on');if(e.key=='ArrowRight')step(1);if(e.key=='ArrowLeft')step(-1);});
+addEventListener('resize',place);
+requestAnimationFrame(place);setTimeout(place,300);
+</script>
+</body>
+</html>
